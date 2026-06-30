@@ -1,4 +1,4 @@
-# <PROJECT> — Ticket Template
+# World Clock — Ticket Template
 
 | | |
 |---|---|
@@ -30,14 +30,14 @@ frontmatter fields and Markdown. There is no external tracker; these files **are
 
 ```yaml
 ---
-id: <PRJ>-000                # unique, zero-padded; see CONVENTIONS.md for the scheme
+id: TST-000                # unique, zero-padded; see CONVENTIONS.md for the scheme
 title: Short imperative summary
 type: story                  # epic | story | task | spike
 status: todo                 # todo | in-progress | blocked | in-review | done
 milestone: 8                 # milestone number from process/milestone-plan.md
 batch: scaffolding           # optional grouping; here it carries the architecture layer
 layer: core                  # core | domain | storage | services | interface | frontend | tooling | docs | repo
-depends_on: []               # ticket ids that must be done first, e.g. [<PRJ>-003, <PRJ>-004]
+depends_on: []               # ticket ids that must be done first, e.g. [TST-003, TST-004]
 implements: []               # FR-n / NFR-n ids this ticket realises, e.g. [FR-12, FR-13, NFR-9]
 tests_required: true         # false only for docs-only, pure-styling, build-plumbing (state why in the body)
 estimate: 3                  # Fibonacci: 1, 2, 3, 5, 8 (rough session-sizing, not a commitment)
@@ -71,8 +71,8 @@ How we know the epic is delivered (usually: all child tickets done and the relev
 criterion from the brief met).
 
 ## Children
-- <PRJ>-xxx — title
-- <PRJ>-yyy — title
+- TST-xxx — title
+- TST-yyy — title
 
 ## References
 - Specification sections (e.g. process/requirements/requirements.md §4, process/architecture/api-contract.md §2.x)
@@ -209,6 +209,6 @@ of done in the root `CLAUDE.md`).
 ```markdown
 ## Notes
 - <DATE> — created
-- <DATE> — blocked on <PRJ>-004 (<reason>)
+- <DATE> — blocked on TST-004 (<reason>)
 - <DATE> — done. Summary: <…>. Sanity test: `<command>`.
 ```

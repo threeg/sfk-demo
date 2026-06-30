@@ -1,4 +1,4 @@
-# <PROJECT> — Ticket-System Conventions
+# World Clock — Ticket-System Conventions
 
 | | |
 |---|---|
@@ -16,22 +16,19 @@ process.
 The ticket system replaces an external tracker: tickets are plain Markdown files living beside the
 code in a single repository, committed and updated in the same commits as the work they describe.
 
-> Replace `<PRJ>` throughout with your project's short prefix (e.g. `ACME`, `WIDGET`). Replace the layer
-> names with your architecture's layers.
-
 ---
 
 ## 1. Identifier scheme
 
-1. **Implementation tickets** are `<PRJ>-NNN`, zero-padded to three digits: `<PRJ>-001`,
-   `<PRJ>-002`, … The number is allocated in **execution order** — a ticket with a lower number
+1. **Implementation tickets** are `TST-NNN`, zero-padded to three digits: `TST-001`,
+   `TST-002`, … The number is allocated in **execution order** — a ticket with a lower number
    never depends on a higher-numbered one (§4). The id is permanent once allocated; numbers are never
    reused or renumbered, even if a ticket is later abandoned.
-2. **Epics** are `<PRJ>-E0N`: `<PRJ>-E01`, `<PRJ>-E02`, … Epics are containers (brief capabilities)
+2. **Epics** are `TST-E0N`: `TST-E01`, `TST-E02`, … Epics are containers (brief capabilities)
    and carry no code, so they sit *outside* the execution order; the `E` prefix keeps them visually
    distinct and stops them consuming an execution slot.
-3. The filename is the id plus a short slug: `<PRJ>-007-core-constants.md`,
-   `<PRJ>-E02-pure-core.md`. One ticket per file.
+3. The filename is the id plus a short slug: `TST-007-core-constants.md`,
+   `TST-E02-pure-core.md`. One ticket per file.
 4. A ticket's id appears in exactly one place as the source of truth — its own `id:` frontmatter
    field. Every other mention (a `depends_on` edge, an epic's `Children` list, a `BOARD.md` row) is a
    reference to it.

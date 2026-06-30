@@ -9,8 +9,8 @@ The single source of truth for project identity and kit versioning. `sfk-init` s
 `sfk-update-process` reads and updates the version fields.
 
 ```yaml
-project_code: ACME        # this project's code / ticket prefix (set by sfk-init, e.g. ACME)
-                          # — also the thread-name prefix: "ACME init", "ACME: Architecture", "ACME Implementation"
+project_code: TST         # this project's code / ticket prefix (set by sfk-init)
+                          # — also the thread-name prefix: "TST init", "TST: Architecture", "TST Implementation"
 kit_name: spec-first-starter-kit
 kit_version: 1.0.0        # the version of the kit these files were shipped from
 author: Gregg Seymour
