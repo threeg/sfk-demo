@@ -27,6 +27,11 @@ across time zones and wants an always-correct, clearly readable view of "what ti
 now" for the places they care about. Its single sentence of value: **accurate local times for many
 places, side by side, always live, fully offline.**
 
+**Design priority.** Accuracy (including correct daylight-saving behaviour) is the non-negotiable
+correctness floor, per the root `CLAUDE.md`. Within that, **simplicity / minimalism** is the guiding
+design principle for v1.0.0: the smallest feature set that delivers the value, with nothing to
+configure beyond adding/removing cities and the 12/24-hour toggle.
+
 ## 2. Problem statement
 
 Checking the time in other places is fiddly and error-prone: people do mental offset arithmetic, get
@@ -48,7 +53,8 @@ glanceable reference. The app must work with no internet connection.
 2. Keep every displayed time **live** — it advances on its own, with no manual refresh, and stays
    accurate to the system clock.
 3. Let the user **add and remove** cities from the curated list to build their own view.
-4. Offer a **12-hour / 24-hour** display toggle that applies to all shown clocks.
+4. Offer a **12-hour / 24-hour** display toggle that applies to all shown clocks; **24-hour is the
+   default** on load.
 5. Run **fully offline**, computing every time locally from the system clock against a bundled
    time-zone database.
 
@@ -58,7 +64,10 @@ The central concept is a **clock**: a chosen city bound to an IANA time zone (e.
 `Asia/Tokyo`*). The user's view is an ordered set of clocks. Each clock derives its displayed time by
 applying its zone's current rules (including daylight-saving offset) to the current system instant.
 The **curated city list** is a bundled, fixed catalogue of well-known cities, each pre-mapped to its
-IANA zone; the user picks clocks from this catalogue rather than entering zones freely.
+IANA zone; the user picks clocks from this catalogue rather than entering zones freely. Because v1.0.0 does not
+persist, the view starts each load from a fixed **default set: Vancouver, Guangzhou, and Hamburg**
+(`America/Vancouver`, `Asia/Shanghai`, `Europe/Berlin`) — chosen to span the Americas, Asia, and
+Europe so time-zone variety is visible immediately.
 
 ## 6. Core approach / algorithm
 
@@ -110,8 +119,8 @@ fully offline; no external services at runtime.
 
 The release is done when the user can:
 
-1. Open the app with no internet connection and see the current local time for a default set of
-   cities, all at once.
+1. Open the app with no internet connection and see the current local time for the default set of
+   cities (Vancouver, Guangzhou, Hamburg), all at once, in 24-hour format.
 2. Watch each displayed time advance on its own, staying accurate to the system clock, without ever
    refreshing.
 3. Add a city from the curated list and see its live clock appear; remove a city and see it disappear.
@@ -124,8 +133,8 @@ The release is done when the user can:
 | Risk / question | Notes / mitigation |
 |-----------------|--------------------|
 | Time-zone data correctness (especially DST) | Use an authoritative bundled IANA tz database; pin its version; cover DST behaviour in the test strategy. Source finalised in Milestone 3. |
-| No persistence in v1.0.0 means the view resets each launch | Accepted for first release; a sensible default city set keeps it useful. Persistence is on the roadmap. |
-| Curated city list coverage | Curate a broad, well-known set; gaps are acceptable for v1.0.0 since full search is roadmapped. Final list decided in Requirements (Milestone 2). |
+| No persistence in v1.0.0 means the view resets each launch | Accepted for first release; the fixed default set (Vancouver, Guangzhou, Hamburg) keeps it useful out of the box. Persistence is on the roadmap. |
+| Curated city list coverage | Curate a broad, well-known set; gaps are acceptable for v1.0.0 since full search is roadmapped. Final catalogue (and the default set's membership) confirmed in Requirements (Milestone 2). |
 | Live-update accuracy / drift | Re-render on a regular interval read from the system clock; verify against expected wall-clock in tests. |
 
 ## 13. Repository strategy

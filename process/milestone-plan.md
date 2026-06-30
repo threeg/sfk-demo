@@ -17,9 +17,9 @@ together, commit by commit.
 
 ## Current position
 
-**v1.0.0 — Milestone 1 (Project brief), Not started (⬜).** The version is scoped (brief drafted; see
-`process/brief/brief.md`) and the milestone table is laid down below. Next step: run
-`sfk-next-milestone` to work Milestone 1 to a committed draft.
+**v1.0.0 — Milestone 1 (Project brief), In progress (🔶).** Working the brief to a committed draft
+via `sfk-next-milestone`; deepening and confirming `process/brief/brief.md` section by section.
+Awaiting user review before `sfk-signoff`.
 
 ---
 
@@ -34,7 +34,7 @@ together, commit by commit.
 
 | # | Milestone | Deliverable | Tool | Status |
 |---|-----------|-------------|------|--------|
-| 1 | Project brief | `process/brief/brief.md` — scope, goals, users, out-of-scope, success criteria | Cowork | ⬜ |
+| 1 | Project brief | `process/brief/brief.md` — scope, goals, users, out-of-scope, success criteria | Cowork | 🔶 |
 | 2 | Requirements | `process/requirements/requirements.md` — numbered `FR-n` / `NFR-n` rules; the curated city list; testable thresholds | Cowork | ⬜ |
 | 3 | Architecture & contract | `process/architecture/architecture.md`, `process/architecture/api-contract.md` — module layout, data model, tz-data source, dependency rule | Cowork | ⬜ |
 | 4 | Wireframes | `process/wireframes/` — main clock view, add/remove city, 12/24h toggle; states and navigation | Cowork | ⬜ |
